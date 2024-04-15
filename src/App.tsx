@@ -1,14 +1,9 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import { ConfigProvider } from "antd";
 import { Provider } from "react-redux";
-
+import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import PrivatePage from "./utils/PrivatePage";
 import store from "./store";
-import Login from "./components/pages/Login";
-import Dashboard from "./components/pages/Dashboard";
+import Router from "./Router";
 
 const App = () => {
   return (
@@ -21,20 +16,8 @@ const App = () => {
           },
         }}
       >
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route
-              path="/dashboard"
-              element={
-                <PrivatePage>
-                  <Dashboard />
-                </PrivatePage>
-              }
-            />
-          </Routes>
-          <ToastContainer />
-        </BrowserRouter>
+        <Router />
+        <ToastContainer stacked transition={Zoom} limit={5} />
       </ConfigProvider>
     </Provider>
   );

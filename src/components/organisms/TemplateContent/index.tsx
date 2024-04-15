@@ -12,6 +12,7 @@ const TemplateContent = ({ children }: Props) => {
         minHeight: 650,
         marginBottom: 0,
         overflowY: "auto",
+        position: "relative",
       }}
     >
       {children}

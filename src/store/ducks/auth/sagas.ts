@@ -6,7 +6,8 @@ import { api } from "../../../services/api";
 export function* signIn(action: ActionType<typeof signInRequest>) {
   try {
     const { email, password } = action.payload;
-    const response = yield call(api.post, "login", { email, password });
+    console.log(email, password);
+    const response: any = yield call(api.post, "login", { email, password });
     if (response.data.user.token !== null) {
       localStorage.setItem("token", response.data.user.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));

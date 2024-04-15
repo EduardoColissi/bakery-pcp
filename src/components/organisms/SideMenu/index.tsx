@@ -1,9 +1,12 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, Space } from "antd";
 import * as React from "react";
-import { MdOutgoingMail } from "react-icons/md";
+import { PiBuildingsBold } from "react-icons/pi";
 import { AiFillDashboard } from "react-icons/ai";
+import { FaList } from "react-icons/fa6";
+import { FiPlusCircle } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { MenuItem } from "./types";
 import "./style.css";
 
 const { Sider } = Layout;
@@ -13,7 +16,7 @@ const { SubMenu } = Menu;
 const SideMenu = () => {
   const [collapsed, setCollapsed] = React.useState(false);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     {
       key: "1",
       icon: <AiFillDashboard />,
@@ -21,16 +24,18 @@ const SideMenu = () => {
     },
     {
       key: "2",
-      icon: <MdOutgoingMail />,
-      label: "Menu w/ submenu",
+      icon: <PiBuildingsBold />,
+      label: "Empresas",
       children: [
         {
-          key: "2-1",
-          label: <Link to="/dashboard">Submenu 1</Link>,
+          key: "2.1",
+          label: <Link to="/companies">Listar</Link>,
+          icon: <FaList />,
         },
         {
-          key: "2-2",
-          label: <Link to="/dashboard">Submenu 2</Link>,
+          key: "2.2",
+          label: <Link to="/companies/create">Cadastrar</Link>,
+          icon: <FiPlusCircle />,
         },
       ],
     },
@@ -82,6 +87,7 @@ const SideMenu = () => {
         style={{
           backgroundColor: "#4168b0",
           color: "#fff",
+          fontSize: 13,
         }}
       >
         {menuItems.map((item) => {
@@ -92,9 +98,27 @@ const SideMenu = () => {
                 icon={item.icon}
                 title={item.label}
                 className="custom-submenu"
+                style={{
+                  backgroundColor: "#4168b0",
+                }}
               >
                 {item.children.map((subItem) => (
-                  <Menu.Item key={subItem.key}>{subItem.label}</Menu.Item>
+                  <Menu.Item
+                    key={subItem.key}
+                    style={{
+                      backgroundColor: "#4168b0" + "CC",
+                      width: "100%",
+                      border: "none",
+                      marginBottom: 0,
+                      marginTop: 0,
+                      marginLeft: 0,
+                      marginRight: 0,
+                      borderRadius: 0,
+                    }}
+                    icon={subItem.icon}
+                  >
+                    {subItem.label}
+                  </Menu.Item>
                 ))}
               </SubMenu>
             );

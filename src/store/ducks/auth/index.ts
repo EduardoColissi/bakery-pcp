@@ -38,7 +38,7 @@ const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
       };
     case AuthTypes.SIGN_IN_FAILURE:
       return { ...state, loading: false, error: true };
-    case AuthTypes.SIGN_OUT:
+    case AuthTypes.SIGN_OUT_REQUEST:
       return {
         ...state,
         loggedUser: {

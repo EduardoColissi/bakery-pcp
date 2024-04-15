@@ -16,12 +16,19 @@ const Input = ({
   name,
   errorText,
   colSize,
+  required = false,
 }: InputProps) => {
+  function requiredField() {
+    return <Text type="danger">*</Text>;
+  }
+
   if (passwordField === true) {
     return (
       <Col span={colSize}>
         <Container>
-          <Text>{label}</Text>
+          <Text>
+            {required && requiredField()} {label}
+          </Text>
           <AntdInput.Password
             name={name}
             prefix={icon}
@@ -41,7 +48,9 @@ const Input = ({
     return (
       <Col span={colSize}>
         <Container>
-          <Text>{label}</Text>
+          <Text>
+            {required && requiredField()} {label}
+          </Text>
           <AntdInput
             name={name}
             prefix={icon}

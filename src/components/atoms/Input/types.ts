@@ -10,4 +10,5 @@ export interface InputProps {
   name: string;
   errorText?: string;
   colSize: number;
+  required?: boolean;
 }
